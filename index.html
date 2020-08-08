@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.min.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <title>React Dom</title>
+  </head>
+  <body class="main">
+    <div class="input">
+      <input type="text" placeholder="Input Here..."/>
+      <input type="button" value="Add" />
+    </div>
+
+    <div id="main"></div>
+    <script type="text/jsx">
+
+      const data=[
+         {id:1, text:"Bread", button:{innerText:"Delete"}},
+         {id:2, text:"Cake"},
+         {id:3, text:"Coke"},
+        ];
+
+      function App (props){
+          console.log(props)
+          return(
+              <div className="containter">
+                  <ul>
+                      <li>{props.text}
+                        <button>Delete</button>
+                      </li>
+                  </ul>
+              </div>
+          );
+      }
+
+
+
+        let appList = data.map(i=> <App key={i.id} text={i.text} />);
+        ReactDOM.render(
+            <React.StrictMode>
+                {appList}
+            </React.StrictMode>, document.getElementById('main')
+        );
+    </script>
+  </body>
+</html>
